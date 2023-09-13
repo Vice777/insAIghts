@@ -6,7 +6,7 @@ from brain import notes_generator
 
 # Constants
 DEFAULT_LINK = "https://www.youtube.com/watch?v=ukzFI9rgwfU"
-OPENAI_API_KEY = os.getenv("OPENAI_API")
+OPENAI_API_KEY = st.secrets["OPENAI_API"]
 
 # Set OpenAI API key
 openai.api_key = OPENAI_API_KEY
