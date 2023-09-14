@@ -2,11 +2,12 @@ import os
 import base64
 import streamlit as st
 import openai
-from brain import notes_generator
+from brain import notes_generator, credits
 
 # Constants
 DEFAULT_LINK = "https://www.youtube.com/watch?v=ukzFI9rgwfU"
-OPENAI_API_KEY = st.secrets["OPENAI_API"]
+# OPENAI_API_KEY = st.secrets["OPENAI_API"]
+OPENAI_API_KEY = os.getenv("OPENAI_API")
 
 # Set OpenAI API key
 openai.api_key = OPENAI_API_KEY
@@ -143,13 +144,29 @@ with expander_3.expander("About Us", expanded=False):
 
 if create_notes and link:
     home_page.empty()
-
     expander_1.empty()
     expander_2.empty()
     expander_3.empty()
 
     response = notes_generator(link)
 
+    
+    title, author, channel_url, publish_date, thumbnail_url = credits(link)
+    
     st.balloons()
-    st.write(response)
     st.toast("Notes generated successfully!")
+
+    st.write(f"{response}<hr>", unsafe_allow_html=True)
+
+    st.write("## Credits")
+    image_column, text_column = st.columns((1, 2))
+    with image_column:
+        st.write(f"""
+            <a href="{link}"><img src="{thumbnail_url}" alt="yt-thumnail" width=230></a>
+        """, unsafe_allow_html=True)
+    with text_column:
+        st.write(f"""
+            #### [{title[:40]}...]({link})
+            ##### **Channel**: [{author}]({channel_url})
+            ##### **Publish Date**: {str(publish_date)[:10]}
+            """)
