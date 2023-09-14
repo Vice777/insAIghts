@@ -49,9 +49,6 @@ ___
 
 ___
 ## About Us
-
-<p>
   This app was developed by [Arpit Sengar](https://github.com/arpy8) and [Vivek Dharewa](https://github.com/Vice77), who are passionate about simplifying the process of extracting valuable information from online videos. If you have any questions, feedback, or feature requests, please don't hesitate to reach out.<br>
   We hope you find insAIghts INTELLIGENCE a valuable addition to your toolkit for efficient knowledge extraction from YouTube videos.<br>
   Thank you for using our app!
-</p>
