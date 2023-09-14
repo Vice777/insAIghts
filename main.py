@@ -104,13 +104,42 @@ with expander_2.expander("Features", expanded=False):
 
 with expander_3.expander("About Us", expanded=False):
     st.write("""
-        ## About Us
-        This app was developed by [Arpit Sengar](https://github.com/arpy8), who is passionate about simplifying the process of extracting valuable information from online videos. If you have any questions, feedback, or feature requests, please don't hesitate to reach out.
+    ## About Us
+             
+    This app was developed by [Arpit Sengar](https://github.com/arpy8) and [Vivek Dharewa](https://github.com/Vice77), who are passionate about simplifying the process of extracting valuable information from online videos. If you have any questions, feedback, or feature requests, please don't hesitate to reach out.<br>
+    
+    We hope you find insAIghts INTELLIGENCE a valuable addition to your toolkit for efficient knowledge extraction from YouTube videos.<br>
 
-        We hope you find insAIghts INTELLIGENCE a valuable addition to your toolkit for efficient knowledge extraction from YouTube videos.
+    Thank you for using our app!
+    <br>
+    """, unsafe_allow_html=True)
 
-        Thank you for using our app!
-    """)
+    padding1, left, right, padding2 = st.columns((2,3,3,2), gap="small")
+    with padding1:
+        st.empty()
+    with padding2:
+        st.empty()
+
+    with left:
+        st.write("""
+        <div style='text-align:center;'>
+        <a href="https://github.com/arpy8"><img src="https://media.licdn.com/dms/image/D4D03AQHDPWhQ_HEtOw/profile-displayphoto-shrink_400_400/0/1692564562193?e=1700092800&v=beta&t=2JUQAlU2ebeub7suOGLWH4mpWtPu1ClX1I_a_0GROa8" width=150px	height=150px /></a>
+        <br>
+        <a href="https://github.com/arpy8"><strong>Arpit Sengar<strong></a>&nbsp;&nbsp;&nbsp;
+        <a href="https://www.linkedin.com/in/arpitsengar/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Linkedin_circle.svg/768px-Linkedin_circle.svg.png?20140819083532" width="24px" height="24px"></a>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with right:
+        st.write("""
+        <div style='text-align:center;'>
+        <a href="https://github.com/Vice777"><img src="https://avatars.githubusercontent.com/Vice777" width=150px	height=150px /></a>
+        <br>
+        <a href="https://github.com/Vice777"><strong>Vivek Dharewa<strong></a>&nbsp;&nbsp;&nbsp;
+        <a href="https://www.linkedin.com/in/vivek-dharewa/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Linkedin_circle.svg/768px-Linkedin_circle.svg.png?20140819083532" width="24px" height="24px"></a>
+        </div>
+        """, unsafe_allow_html=True)
+    st.write("<br>", unsafe_allow_html=True)    
 
 if create_notes and link:
     home_page.empty()
