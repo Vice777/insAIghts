@@ -30,7 +30,12 @@ def video_title(url):
 
 def text_extractor(url):
     try:
-        video_id = url.split("?v=")[1]
+        if "&list=" in url:
+            url = url.split("&list=")[0]
+        elif "?si=" in url:
+            url = url.split("?si=")[0]
+        video_id = url.split("?v=")[-1] if "?v=" in url else url.split("/")[-1]
+
     except IndexError:
         video_id = url.split("/")[-1]
 
