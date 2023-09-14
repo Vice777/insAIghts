@@ -8,6 +8,7 @@ from langchain.prompts.chat import (
 from pytube import YouTube
 from youtube_transcript_api import YouTubeTranscriptApi
 import streamlit as st
+from pytube import YouTube
 
 OPENAI_API = os.getenv("OPENAI_API")
 
@@ -67,3 +68,7 @@ def notes_generator(url):
     )
 
     return response.content
+
+def credits(url):
+     yt = YouTube(url)
+     return yt.title, yt.author, yt.channel_url, yt.publish_date, yt.thumbnail_url
