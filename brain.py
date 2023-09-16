@@ -10,7 +10,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import streamlit as st
 from pytube import YouTube
 
-OPENAI_API = os.getenv("OPENAI_API")
+OPENAI_API = st.secrets["OPENAI_API"]
 
 template = (""" 
     I'm preparing notes from a video titled "{title}". I need you to
