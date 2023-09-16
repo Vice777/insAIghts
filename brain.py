@@ -50,6 +50,7 @@ def text_extractor(url):
     except ConnectionError as e:
          st.error(e)
 
+@st.cache_data
 def notes_generator(url):
     chat = ChatOpenAI(temperature=0, openai_api_key=OPENAI_API)
 
