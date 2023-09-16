@@ -43,8 +43,10 @@ def text_extractor(url):
         response = YouTubeTranscriptApi.get_transcript(video_id)
         final = "".join([i['text'] for i in response])
 
-        if len(final) > 5:
+        if 4078 > len(final) > 5:
             return final
+        else:
+            return None
     except ConnectionError as e:
          st.error(e)
 
@@ -61,7 +63,8 @@ def notes_generator(url):
     
     response = chat(
         gpt_response.format_prompt(
-            title=video_title(url), transcription=text_extractor(url), text=url
+            title=video_title(url), transcription=text_extractor(url) if text_extractor(url) is not None else "Sorry, couldn't extract the transcript for this video.", 
+            text=url
         ).to_messages()
     )
 
