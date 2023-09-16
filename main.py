@@ -6,10 +6,10 @@ from brain import notes_generator, credits
 
 # Constants
 DEFAULT_LINK = "https://www.youtube.com/watch?v=ukzFI9rgwfU"
-OPENAI_API_KEY = st.secrets["OPENAI_API"]
+OPENAI_API = st.secrets["OPENAI_API"]
 
 # Set OpenAI API key
-openai.api_key = OPENAI_API_KEY
+openai.api_key = OPENAI_API
 
 # Function to set page background image
 @st.cache_data
