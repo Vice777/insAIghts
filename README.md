@@ -42,9 +42,9 @@ ___
 
 ___
 ## Contributors
-| <a href="https://github.com/arpy82"><img src="https://avatars.githubusercontent.com/arpy82" width=150px	height=150px /></a>| <a href="https://github.com/Vice777"><img src="https://avatars.githubusercontent.com/Vice777" width=150px height=150px /></a>|
+| <a href="https://github.com/arpy8"><img src="https://avatars.githubusercontent.com/arpy8" width=150px	height=150px /></a>| <a href="https://github.com/Vice777"><img src="https://avatars.githubusercontent.com/Vice777" width=150px height=150px /></a>|
 | :---: | :---: |
-| **[Arpit Sengar](https://github.com/arpy82)**| **[Vivek Dharewa](https://github.com/Vice777)**|
+| **[Arpit Sengar](https://github.com/arpy8)**| **[Vivek Dharewa](https://github.com/Vice777)**|
 | <a href="https://www.linkedin.com/in/arpitsengar/"><img src="https://mpng.subpng.com/20180324/vhe/kisspng-linkedin-computer-icons-logo-social-networking-ser-facebook-5ab6ebfe5f5397.2333748215219374063905.jpg" width="32px" height="32px"></a> | <a href="https://www.linkedin.com/in/vivek-dharewa/"><img src="https://mpng.subpng.com/20180324/vhe/kisspng-linkedin-computer-icons-logo-social-networking-ser-facebook-5ab6ebfe5f5397.2333748215219374063905.jpg" width="32px" height="32px"></a>|
 
 ___

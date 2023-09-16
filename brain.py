@@ -12,7 +12,6 @@ from pytube import YouTube
 
 OPENAI_API_KEY = st.secrets["OPENAI_API"]
 
-
 template = (""" 
     I'm preparing notes from a video titled "{title}". I need you to
     act as an expert professor and provide me with comprehensive and well-structured 
