@@ -16,7 +16,7 @@ template = ("""
     act as an expert professor and provide me with comprehensive and well-structured 
     notes from the following text. 
 
-    Here is the tex:
+    Here is the text:
     {transcription}
 
     Condition: Please ensure the notes cover the following topics: ALL THE TOPICS.
@@ -48,7 +48,6 @@ def text_extractor(url):
     except ConnectionError as e:
          st.error(e)
 
-@st.cache_data
 def notes_generator(url):
     chat = ChatOpenAI(temperature=0, openai_api_key=OPENAI_API)
 

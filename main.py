@@ -12,7 +12,6 @@ OPENAI_API = st.secrets["OPENAI_API"]
 openai.api_key = OPENAI_API
 
 # Function to set page background image
-@st.cache_data
 def get_base64_of_bin_file(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
