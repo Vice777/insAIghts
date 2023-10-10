@@ -24,11 +24,36 @@ template = ("""
     Strictly do not print anything else other than the notes.
     """)
 
-def video_title(url):
-        yt = YouTube(url)
-        return yt.title
+def video_title(url):    
+    """
+    This function retrieves the title of a YouTube video given its URL.
+
+    Arguments:
+    url -- A string representing the URL of a YouTube video.
+
+    Returns:
+    str -- A string representing the title of the YouTube video.
+
+    Raises:
+    Exception -- If the provided URL is not valid or does not point to a YouTube video.
+    """
+        
+    yt = YouTube(url)
+    return yt.title
 
 def text_extractor(url):
+    """
+    This function extracts the text from a YouTube video transcript given its URL.
+
+    Args:
+        url: A string representing the URL of a YouTube video.
+
+    Returns:
+        A string containing the transcript text of the YouTube video.
+
+    Raises:
+        ConnectionError: If there is an error connecting to the YouTube Transcript API.
+    """
     try:
         if "&list=" in url:
             url = url.split("&list=")[0]
@@ -52,6 +77,19 @@ def text_extractor(url):
 
 @st.cache_data
 def notes_generator(url):
+    """
+    This function generates notes based on the provided URL.
+
+    Args:
+        url: A string representing the URL of the content for which notes are to be generated.
+
+    Returns:
+        A string containing the generated notes.
+
+    Raises:
+        Exception: If the URL is not valid or if there's an error in generating notes.
+
+    """
     chat = ChatOpenAI(temperature=0, openai_api_key=OPENAI_API)
 
     system_message_prompt = SystemMessagePromptTemplate.from_template(template)
@@ -72,5 +110,18 @@ def notes_generator(url):
     return response.content
 
 def credits(url):
+     """
+    This function generates credits of the content-creator based on the provided URL.
+
+    Args:
+        url: A string representing the URL of the content for which notes are to be generated.
+
+    Returns:
+        A string containing the credits for the YouTube video.
+
+    Raises:
+        Exception: If the URL is not valid or if there's an error in generating notes.
+
+    """
      yt = YouTube(url)
      return yt.title, yt.author, yt.channel_url, yt.publish_date, yt.thumbnail_url
