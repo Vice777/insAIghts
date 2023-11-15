@@ -1,15 +1,17 @@
-import os
 import base64
 import streamlit as st
+import time
 import openai
 from brain import notes_generator, credits
 
 # Constants
 DEFAULT_LINK = "https://www.youtube.com/watch?v=ukzFI9rgwfU"
 OPENAI_API = st.secrets["OPENAI_API"]
+link = ""
+create_notes = False
 
 # Set OpenAI API key
-openai.api_key = OPENAI_API
+openai.api_key = None
 
 # Function to set page background image
 def get_base64_of_bin_file(bin_file):
@@ -74,19 +76,41 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Set page background
 set_page_background("assets/background.webp")
-
 # Sidebar
 with st.sidebar:
     st.image("assets/logo2.png")
     st.caption("Get detailed notes from a YouTube video")
-    st.info("""
-        Please ensure that the chosen video includes English subtitles and has a duration of less than 20 minutes.
-    """)
-    default_bool = st.checkbox('Use Example Link', value=False)
-    link = st.text_input('Paste the youTube link here', value=DEFAULT_LINK if default_bool else "", placeholder=DEFAULT_LINK)
+    
+    api_key = st.text_input("Enter your OpenAI API key:", placeholder="sk-...gb2a")
+    obtain_key = st.info("""Note: You can obtain your OpenAI API key from the OpenAI website. You may use this [LINK](https://beta.openai.com/account/api-keys) if you're already logged in.""")
 
-# Main content
-create_notes = st.sidebar.button("Create Notes")
+    if api_key and len(api_key) > 50:
+        api_success =  st.success("API Key entered successfully!")
+        
+        time.sleep(1.75)
+        
+        api_success.empty()
+        obtain_key.empty()
+                
+        openai.api_key = api_key
+
+        default_bool = st.checkbox('Use Example Link', value=False)
+        link = st.text_input('Paste the YouTube link here', value=DEFAULT_LINK if default_bool else "", placeholder=DEFAULT_LINK)
+
+        create_notes_button = st.empty()
+        
+        st.sidebar.info("""
+            Please ensure that the chosen video includes English subtitles and has a duration of less than 20 minutes.
+        """)
+
+        create_notes = st.button("Create Notes")
+
+        
+    
+    elif api_key and not len(api_key) > 50:
+        st.toast("Please enter a valid OpenAI API key.")
+
+# Main content  
 home_page = st.empty()
 expander_1 = st.empty()
 expander_2 = st.empty()
@@ -147,8 +171,8 @@ with expander_3.expander("About Us", expanded=False):
     with left:
         st.write("""
         <div style='text-align:center;'>
-        <a href="https://github.com/arpy8"><img src="https://media.licdn.com/dms/image/D4D03AQHDPWhQ_HEtOw/profile-displayphoto-shrink_400_400/0/1692564562193?e=1700092800&v=beta&t=2JUQAlU2ebeub7suOGLWH4mpWtPu1ClX1I_a_0GROa8" width=150px	height=150px /></a>
-        <br>
+        <a href="https://github.com/arpy8"><img src="https://avatars.githubusercontent.com/arpy8" width=150px	height=150px /></a>
+        <br>    
         <a href="https://github.com/arpy8"><strong>Arpit Sengar<strong></a>&nbsp;&nbsp;&nbsp;
         <a href="https://www.linkedin.com/in/arpitsengar/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Linkedin_circle.svg/768px-Linkedin_circle.svg.png?20140819083532" width="24px" height="24px"></a>
         </div>
@@ -165,7 +189,7 @@ with expander_3.expander("About Us", expanded=False):
         """, unsafe_allow_html=True)
     st.write("<br>", unsafe_allow_html=True)    
 
-if create_notes and link:
+if create_notes and link and openai.api_key is not None:
     home_page.empty()
     expander_1.empty()
     expander_2.empty()
@@ -193,3 +217,6 @@ if create_notes and link:
             ##### **Channel**: [{author}]({channel_url})
             ##### **Publish Date**: {str(publish_date)[:10]}
             """)
+        
+elif create_notes and openai.api_key is None:
+    st.toast("Please enter a valid OpenAI API key.")
