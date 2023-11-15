@@ -15,11 +15,36 @@ openai.api_key = None
 
 # Function to set page background image
 def get_base64_of_bin_file(bin_file):
+    """
+    This function reads a binary file and converts its content into a base64 encoded string.
+
+    Arguments:
+    bin_file: A string representing the path to the binary file to be read.
+
+    Returns:
+    A string representing the base64 encoded content of the binary file.
+
+    Raises:
+    FileNotFoundError: If the specified binary file does not exist.
+    """
     with open(bin_file, 'rb') as f:
         data = f.read()
     return base64.b64encode(data).decode()
 
 def set_page_background(png_file):
+    """
+    Description:
+    Sets the background of a page using a PNG file.
+
+    Arguments:
+    png_file (str): Path to the PNG file that will be used as the background image.
+
+    Returns:
+    None
+
+    Raises:
+    No exceptions are raised by this function.
+    """
     bin_str = get_base64_of_bin_file(png_file)
     page_bg_img = f'''
         <style>
